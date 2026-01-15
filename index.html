@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>soleGfx | Visual Identity Architect</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="noise-overlay"></div>
+    <div class="vignette-overlay"></div>
+
+    <nav>
+        <div class="logo">sole<span class="accent-text">Gfx</span></div>
+        <a href="#contact" class="nav-contact">Let's Talk</a>
+    </nav>
+
+    <header id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">GAURAV</h1>
+            <h2 class="hero-subtitle">GFX Artist <span class="accent-dot">•</span> Motion Designer <span class="accent-dot">•</span> Video Editor</h2>
+            <p class="hero-desc">
+                I am a results-driven GFX Artist, Video Editor, and Motion Graphic Designer creating cinematic, high-impact visuals for agencies. I specialize in storytelling, motion design, and color grading.
+            </p>
+            <a href="#skills" class="cta-btn">View My Expertise</a>
+        </div>
+    </header>
+
+    <section id="skills">
+        <div class="section-header">
+            <h3 class="section-label">Interactive Showcase</h3>
+            <h2 class="section-title">What I Do</h2>
+            <p class="instruction-text">(Click a card to watch preview)</p>
+        </div>
+        
+        <div class="grid-container">
+            <div class="card skill-card" data-video="videos/motion.mp4">
+                <i class="fa-solid fa-clapperboard"></i>
+                <h3>Motion Graphics</h3>
+                <div class="play-hint"><i class="fa-solid fa-play"></i> Watch Preview</div>
+            </div>
+
+            <div class="card skill-card" data-video="https://joy1.videvo.net/videvo_files/video/free/2015-09/large_watermarked/Editing_desk_preview.mp4">
+                <i class="fa-solid fa-file-video"></i>
+                <h3>Video Editing</h3>
+                <div class="play-hint"><i class="fa-solid fa-play"></i> Watch Preview</div>
+            </div>
+
+            <div class="card skill-card" data-video="https://joy1.videvo.net/videvo_files/video/free/2019-01/large_watermarked/181015_13_Venice_Beach_Drone_002_preview.mp4">
+                <i class="fa-solid fa-eye-dropper"></i>
+                <h3>Color Grading</h3>
+                <div class="play-hint"><i class="fa-solid fa-play"></i> Watch Preview</div>
+            </div>
+
+            <div class="card skill-card" data-video="https://joy1.videvo.net/videvo_files/video/free/2019-05/large_watermarked/190516_06_AZ-Sunset-Timelapses_UHD_05_preview.mp4">
+                <i class="fa-solid fa-photo-film"></i>
+                <h3>Image Manipulation</h3>
+                <div class="play-hint"><i class="fa-solid fa-play"></i> Watch Preview</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="arsenal">
+        <div class="section-header">
+            <h3 class="section-label">Toolkit</h3>
+            <h2 class="section-title">My Arsenal</h2>
+        </div>
+
+        <div class="arsenal-grid">
+            <div class="glass-card delay-1">
+                <div class="icon-box ps"><i class="fa-solid fa-paintbrush"></i></div>
+                <h3>Photoshop</h3>
+            </div>
+            <div class="glass-card delay-2">
+                <div class="icon-box ae"><i class="fa-solid fa-hurricane"></i></div>
+                <h3>After Effects</h3>
+            </div>
+            <div class="glass-card delay-3">
+                <div class="icon-box pr"><i class="fa-solid fa-film"></i></div>
+                <h3>Premiere Pro</h3>
+            </div>
+            <div class="glass-card delay-4">
+                <div class="icon-box dr"><i class="fa-solid fa-sliders"></i></div>
+                <h3>DaVinci Resolve</h3>
+            </div>
+        </div>
+    </section>
+
+    <div id="video-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="video-wrapper">
+                <video id="modal-video" controls autoplay muted loop playsinline>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <h3 id="modal-title">Project Name</h3>
+        </div>
+    </div>
+
+    <section id="contact">
+        <div class="section-header">
+            <h3 class="section-label">Connect</h3>
+            <h2 class="section-title">Let's Work Together</h2>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-box">
+                <i class="fa-solid fa-envelope"></i>
+                <h3>Email Me</h3>
+                <a href="mailto:solegfx14@gmail.com">solegfx14@gmail.com</a>
+            </div>
+
+            <div class="contact-box">
+                <i class="fa-brands fa-whatsapp"></i>
+                <h3>WhatsApp Me</h3>
+                <div class="phone-links">
+                    <a href="https://wa.me/918755166010" target="_blank">+91 87551 66010</a>
+                    <a href="https://wa.me/918864883935" target="_blank">+91 88648 83935</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 soleGfx. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
