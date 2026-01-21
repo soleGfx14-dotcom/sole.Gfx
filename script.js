@@ -78,8 +78,10 @@ initParticles();
 animateParticles();
 
 // --- 2. VIDEO MODAL LOGIC ---
+// --- 2. VIDEO MODAL LOGIC ---
 const modal = document.getElementById("video-modal");
 const modalVideo = document.getElementById("modal-video");
+const modalYoutube = document.getElementById("modal-youtube"); // Handles YouTube AND Google Drive
 const modalTitle = document.getElementById("modal-title");
 const closeBtn = document.querySelector(".close-btn");
 const skillCards = document.querySelectorAll(".skill-card");
@@ -91,18 +93,39 @@ skillCards.forEach(card => {
 
         if(videoSrc) {
             modal.classList.add("show");
-            modalVideo.src = videoSrc;
             modalTitle.innerText = titleText;
-            modalVideo.play();
-            document.body.style.overflow = "hidden"; // Stop scrolling
+            document.body.style.overflow = "hidden"; // Scroll band karna
+
+            // UPDATED CHECK: Check for YouTube OR Google Drive
+            if (videoSrc.includes("youtube") || videoSrc.includes("youtu.be") || videoSrc.includes("drive.google.com")) {
+                // If it is YouTube or Drive (Use Iframe):
+                modalVideo.style.display = "none"; 
+                modalVideo.pause();
+                modalVideo.src = "";
+
+                modalYoutube.style.display = "block";
+                modalYoutube.src = videoSrc; 
+            } else {
+                // If it is a direct MP4 file (Use Video Tag):
+                modalYoutube.style.display = "none";
+                modalYoutube.src = "";
+
+                modalVideo.style.display = "block";
+                modalVideo.src = videoSrc;
+                modalVideo.play();
+            }
         }
     });
 });
 
 function closeModal() {
     modal.classList.remove("show");
+    
+    // Stop both players
     modalVideo.pause();
     modalVideo.src = "";
+    modalYoutube.src = ""; // Stops audio for YouTube/Drive
+    
     document.body.style.overflow = "auto";
 }
 
@@ -139,4 +162,5 @@ function animateCursor() {
     cursorOutline.style.top = `${outlineY}px`;
     requestAnimationFrame(animateCursor);
 }
+
 animateCursor();;
