@@ -79,6 +79,7 @@ animateParticles();
 
 // --- 2. VIDEO MODAL LOGIC ---
 // --- 2. VIDEO MODAL LOGIC ---
+// --- 2. VIDEO MODAL LOGIC ---
 const modal = document.getElementById("video-modal");
 const modalVideo = document.getElementById("modal-video");
 const modalYoutube = document.getElementById("modal-youtube"); // Handles YouTube AND Google Drive
@@ -162,5 +163,4 @@ function animateCursor() {
     cursorOutline.style.top = `${outlineY}px`;
     requestAnimationFrame(animateCursor);
 }
-
 animateCursor();;
