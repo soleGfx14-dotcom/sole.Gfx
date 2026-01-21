@@ -71,7 +71,7 @@
         <h3>Image Manipulation</h3>
         <div class="play-hint"><i class="fa-solid fa-play"></i> Watch Preview</div>
     </div>
-        </div>
+</div>
     </section>
 
     <section id="arsenal">
@@ -104,11 +104,12 @@
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <div class="video-wrapper">
-                <video id="modal-video" controls autoplay muted loop playsinline>
-                    <source src="" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+    <video id="modal-video" controls playsinline style="width: 100%; height: 100%; display: none;">
+        <source src="" type="video/mp4">
+    </video>
+    
+    <iframe id="modal-youtube" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none; aspect-ratio: 16/9;"></iframe>
+</div>
             <h3 id="modal-title">Project Name</h3>
         </div>
     </div>
@@ -143,6 +144,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>
-
