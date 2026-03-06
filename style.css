@@ -167,8 +167,7 @@ section {
 /* --- UPDATED SKILL CARD STYLES --- */
 .grid-container {
     display: grid;
-    /* Changed to repeat(4, 1fr) to force four cards in a row as requested */
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     justify-content: center;
     align-items: stretch;
@@ -182,7 +181,7 @@ section {
     transition: 0.3s ease;
     border-radius: 12px; 
     cursor: pointer;
-    overflow: hidden; 
+    overflow: hidden; /* This cuts off anything outside the card */
     display: flex;
     flex-direction: column;
     position: relative;
@@ -191,9 +190,9 @@ section {
 
 .card-thumbnail {
     width: 100%;
-    height: 180px !important; /* Adjusted slightly for the 4-column row */
-    min-height: 180px;
-    object-fit: cover !important; 
+    height: 200px !important; /* Forces the exact height */
+    min-height: 200px;
+    object-fit: cover !important; /* Crops image to fit without squishing */
     object-position: center; 
     display: block;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -202,37 +201,35 @@ section {
 }
 
 .card-content {
-    padding: 20px; 
+    padding: 25px; 
     flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center icon and text horizontally */
     justify-content: center;
-    background-color: #0F1215; /* Solid dark background for text area */
+    background-color: var(--bg-color); /* Prevents transparent overlapping */
     z-index: 2;
 }
 
 .skill-card i {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: var(--text-white); /* White icons as per your second image */
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--text-muted);
     transition: 0.3s;
 }
 
 .skill-card h3 {
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 1px;
     color: var(--text-white);
-    font-size: 1rem;
-    text-transform: capitalize;
+    font-size: 1.2rem;
 }
 
 .play-hint {
-    margin-top: 10px;
-    font-size: 0.7rem;
+    margin-top: 15px;
+    font-size: 0.8rem;
     color: var(--primary-accent);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     opacity: 0;
     transform: translateY(10px);
     transition: 0.3s;
@@ -242,6 +239,7 @@ section {
 .skill-card:hover {
     border-color: var(--primary-accent);
     box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .skill-card:hover .card-thumbnail {
@@ -420,20 +418,13 @@ footer { text-align: center; padding: 40px; color: var(--text-muted); font-size:
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 1024px) {
-    /* Switch to 2x2 grid on tablets */
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 768px) {
     .hero-title { font-size: 4rem; }
     .cursor-dot, .cursor-outline { display: none; }
     * { cursor: auto; }
     
     .grid-container {
-        grid-template-columns: 1fr; /* Stack cards on mobile */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 }
 
