@@ -167,8 +167,9 @@ section {
 /* --- UPDATED SKILL CARD STYLES --- */
 .grid-container {
     display: grid;
+    /* This ensures cards shrink on smaller screens but stay in a clean grid */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
     align-items: stretch;
 }
@@ -178,62 +179,65 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 0; 
     text-align: center;
-    transition: 0.3s ease;
-    border-radius: 12px; 
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    border-radius: 16px; 
     cursor: pointer;
-    overflow: hidden; /* This cuts off anything outside the card */
+    overflow: hidden; /* Ensures the image doesn't bleed out of the rounded corners */
     display: flex;
     flex-direction: column;
-    position: relative;
     height: 100%;
+    position: relative;
 }
 
 .card-thumbnail {
     width: 100%;
-    height: 200px !important; /* Forces the exact height */
-    min-height: 200px;
-    object-fit: cover !important; /* Crops image to fit without squishing */
-    object-position: center; 
+    height: 200px; /* Locked height so images never 'explode' the layout */
+    object-fit: cover; /* This crops the image to fill the area perfectly without stretching */
     display: block;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    margin: 0;
-    padding: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.5s ease;
 }
 
 .card-content {
-    padding: 25px; 
-    flex-grow: 1; 
+    padding: 25px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--bg-color); /* Prevents transparent overlapping */
-    z-index: 2;
+    background: rgba(11, 14, 17, 0.8); /* Matches your background color */
+}
+
+/* Hover Effects */
+.skill-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-accent);
+    box-shadow: 0 15px 35px rgba(0, 229, 255, 0.2);
+}
+
+.skill-card:hover .card-thumbnail {
+    transform: scale(1.1); /* Subtle zoom inside the card */
 }
 
 .skill-card i {
-    font-size: 2rem;
-    margin-bottom: 15px;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
     color: var(--text-muted);
-    transition: 0.3s;
 }
 
 .skill-card h3 {
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: var(--text-white);
-    font-size: 1.2rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 10px;
 }
 
 .play-hint {
-    margin-top: 15px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--primary-accent);
     text-transform: uppercase;
     letter-spacing: 2px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: 0.3s;
     font-weight: bold;
+    opacity: 0.7;
 }
 
 .skill-card:hover {
@@ -435,3 +439,4 @@ body.modal-active .cursor-outline {
     opacity: 0 !important;
     visibility: hidden !important;
 }
+
