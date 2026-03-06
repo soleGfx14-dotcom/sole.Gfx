@@ -220,9 +220,17 @@ section {
 
 /* --- ARSENAL / TOOLS --- */
 .arsenal-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    display: flex;
+    flex-direction: row; /* This puts the cards in a horizontal line */
+    flex-wrap: wrap; /* Ensures they wrap to a new line on small mobile screens instead of shrinking too much */
+    gap: 20px; /* Adds breathing room between the cards */
+    justify-content: flex-start; /* Aligns the cards to the left (you can change to 'center' if you prefer) */
+}
+
+/* Optional but recommended: This ensures the cards look even */
+.arsenal-grid .glass-card {
+    flex: 1 1 0; /* Makes all cards equal width */
+    min-width: 120px; /* Prevents the cards from getting too squished on smaller screens */
 }
 
 .glass-card {
@@ -389,4 +397,5 @@ footer { text-align: center; padding: 40px; color: var(--text-muted); font-size:
 .close-btn {
     cursor: pointer !important;
 }
+
 
