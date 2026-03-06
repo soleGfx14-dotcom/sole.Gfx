@@ -77,65 +77,7 @@ function connectParticles() {
 initParticles();
 animateParticles();
 
-// --- 2. VIDEO MODAL LOGIC ---
-// --- 2. VIDEO MODAL LOGIC ---
-// --- 2. VIDEO MODAL LOGIC ---
-const modal = document.getElementById("video-modal");
-const modalVideo = document.getElementById("modal-video");
-const modalYoutube = document.getElementById("modal-youtube"); // Handles YouTube AND Google Drive
-const modalTitle = document.getElementById("modal-title");
-const closeBtn = document.querySelector(".close-btn");
-const skillCards = document.querySelectorAll(".skill-card");
-
-skillCards.forEach(card => {
-    card.addEventListener("click", () => {
-        const videoSrc = card.getAttribute("data-video");
-        const titleText = card.querySelector("h3").innerText;
-
-        if(videoSrc) {
-            modal.classList.add("show");
-            modalTitle.innerText = titleText;
-            document.body.style.overflow = "hidden"; // Scroll band karna
-
-            // UPDATED CHECK: Check for YouTube OR Google Drive
-            if (videoSrc.includes("youtube") || videoSrc.includes("youtu.be") || videoSrc.includes("drive.google.com")) {
-                // If it is YouTube or Drive (Use Iframe):
-                modalVideo.style.display = "none"; 
-                modalVideo.pause();
-                modalVideo.src = "";
-
-                modalYoutube.style.display = "block";
-                modalYoutube.src = videoSrc; 
-            } else {
-                // If it is a direct MP4 file (Use Video Tag):
-                modalYoutube.style.display = "none";
-                modalYoutube.src = "";
-
-                modalVideo.style.display = "block";
-                modalVideo.src = videoSrc;
-                modalVideo.play();
-            }
-        }
-    });
-});
-
-function closeModal() {
-    modal.classList.remove("show");
-    
-    // Stop both players
-    modalVideo.pause();
-    modalVideo.src = "";
-    modalYoutube.src = ""; // Stops audio for YouTube/Drive
-    
-    document.body.style.overflow = "auto";
-}
-
-closeBtn.addEventListener("click", closeModal);
-window.addEventListener("click", (e) => {
-    if (e.target == modal) closeModal();
-});
-
-// --- 3. CURSOR & INTERACTIONS ---
+// --- 2. CURSOR & INTERACTIONS ---
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
 let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
@@ -163,4 +105,62 @@ function animateCursor() {
     cursorOutline.style.top = `${outlineY}px`;
     requestAnimationFrame(animateCursor);
 }
-animateCursor();;
+animateCursor();
+
+// --- 3. VIDEO MODAL LOGIC ---
+const modal = document.getElementById("video-modal");
+const modalVideo = document.getElementById("modal-video");
+const modalYoutube = document.getElementById("modal-youtube"); 
+const modalTitle = document.getElementById("modal-title");
+const closeBtn = document.querySelector(".close-btn");
+const skillCards = document.querySelectorAll(".skill-card");
+
+skillCards.forEach(card => {
+    card.addEventListener("click", () => {
+        const videoSrc = card.getAttribute("data-video");
+        const titleText = card.querySelector("h3").innerText;
+
+        if(videoSrc) {
+            modal.classList.add("show");
+            modalTitle.innerText = titleText;
+            
+            // Lock scrolling and trigger the CSS to hide custom cursor
+            document.body.style.overflow = "hidden"; 
+            document.body.classList.add("modal-active"); 
+
+            if (videoSrc.includes("youtube") || videoSrc.includes("youtu.be") || videoSrc.includes("drive.google.com")) {
+                modalVideo.style.display = "none"; 
+                modalVideo.pause();
+                modalVideo.src = "";
+
+                modalYoutube.style.display = "block";
+                modalYoutube.src = videoSrc; 
+            } else {
+                modalYoutube.style.display = "none";
+                modalYoutube.src = "";
+
+                modalVideo.style.display = "block";
+                modalVideo.src = videoSrc;
+                modalVideo.play();
+            }
+        }
+    });
+});
+
+function closeModal() {
+    modal.classList.remove("show");
+    
+    // Stop both players
+    modalVideo.pause();
+    modalVideo.src = "";
+    modalYoutube.src = ""; 
+    
+    // Restore scrolling and bring the custom cursor back
+    document.body.style.overflow = "auto";
+    document.body.classList.remove("modal-active"); 
+}
+
+closeBtn.addEventListener("click", closeModal);
+window.addEventListener("click", (e) => {
+    if (e.target == modal) closeModal();
+});
