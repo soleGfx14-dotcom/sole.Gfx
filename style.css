@@ -164,42 +164,47 @@ section {
 .section-title { font-family: var(--font-heading); font-size: 3rem; text-transform: uppercase; margin-bottom: 10px;}
 .instruction-text { color: var(--text-muted); font-size: 0.8rem; opacity: 0.6; }
 
-/* --- ENFORCED GRID SYSTEM --- */
+/* --- THE SKILL GRID FIX --- */
 .grid-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
     justify-content: center;
+    align-items: stretch;
     padding: 20px;
 }
 
 .skill-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 !important; /* Forces zero padding to keep image flush */
     border-radius: 16px;
-    width: 300px; /* Fixed width for consistency */
-    overflow: hidden; /* This stops the 'explosion' of large images */
+    overflow: hidden !important; /* THIS IS THE SCISSORS: It cuts off anything outside the card */
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
-    height: auto;
+    height: 100%;
+    transition: 0.3s ease;
 }
 
-/* THE FIX: This forces the image to stay in a perfect 16:9 box */
+/* THIS LOCKS THE IMAGE SIZE */
 .card-thumbnail {
-    width: 100%;
-    aspect-ratio: 16 / 9; 
-    object-fit: cover; /* SMART CROP: Prevents stretching or layout breaking */
+    width: 100% !important;
+    height: 200px !important; /* Hard height limit */
+    object-fit: cover !important; /* CROPS the image into the box perfectly */
+    object-position: top; /* Ensures faces/titles at the top of banners are visible */
     display: block;
-    background: #1a1a1a; /* Fallback color if image fails to load */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card-content {
     padding: 20px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.2);
+    background: #0B0E11; /* Solid background to hide any bleed-through */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
 }
-
 .skill-card i {
     font-size: 1.5rem;
     margin-bottom: 10px;
@@ -421,5 +426,6 @@ body.modal-active .cursor-outline {
     opacity: 0 !important;
     visibility: hidden !important;
 }
+
 
 
