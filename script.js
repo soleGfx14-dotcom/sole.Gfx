@@ -1,9 +1,7 @@
-// --- 1. PARTICLE FLOW SYSTEM (CANVAS) ---
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 let particlesArray;
 
-// Set canvas size
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -77,7 +75,6 @@ function connectParticles() {
 initParticles();
 animateParticles();
 
-// --- 2. CURSOR & INTERACTIONS ---
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
 let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
@@ -87,13 +84,6 @@ document.addEventListener('mousemove', (e) => {
     mouseY = e.clientY;
     cursorDot.style.left = `${mouseX}px`;
     cursorDot.style.top = `${mouseY}px`;
-
-    const target = e.target;
-    if (target.tagName === 'A' || target.closest('.skill-card') || target.tagName === 'BUTTON') {
-        document.body.classList.add('hover-active');
-    } else {
-        document.body.classList.remove('hover-active');
-    }
 });
 
 function animateCursor() {
@@ -107,7 +97,6 @@ function animateCursor() {
 }
 animateCursor();
 
-// --- 3. VIDEO MODAL LOGIC ---
 const modal = document.getElementById("video-modal");
 const modalVideo = document.getElementById("modal-video");
 const modalYoutube = document.getElementById("modal-youtube"); 
@@ -119,26 +108,17 @@ skillCards.forEach(card => {
     card.addEventListener("click", () => {
         const videoSrc = card.getAttribute("data-video");
         const titleText = card.querySelector("h3").innerText;
-
         if(videoSrc) {
             modal.classList.add("show");
             modalTitle.innerText = titleText;
-            
-            // Lock scrolling and trigger the CSS to hide custom cursor
             document.body.style.overflow = "hidden"; 
             document.body.classList.add("modal-active"); 
-
-            if (videoSrc.includes("youtube") || videoSrc.includes("youtu.be") || videoSrc.includes("drive.google.com")) {
+            if (videoSrc.includes("youtube") || videoSrc.includes("youtu.be")) {
                 modalVideo.style.display = "none"; 
-                modalVideo.pause();
-                modalVideo.src = "";
-
                 modalYoutube.style.display = "block";
                 modalYoutube.src = videoSrc; 
             } else {
                 modalYoutube.style.display = "none";
-                modalYoutube.src = "";
-
                 modalVideo.style.display = "block";
                 modalVideo.src = videoSrc;
                 modalVideo.play();
@@ -149,13 +129,9 @@ skillCards.forEach(card => {
 
 function closeModal() {
     modal.classList.remove("show");
-    
-    // Stop both players
     modalVideo.pause();
     modalVideo.src = "";
     modalYoutube.src = ""; 
-    
-    // Restore scrolling and bring the custom cursor back
     document.body.style.overflow = "auto";
     document.body.classList.remove("modal-active"); 
 }
