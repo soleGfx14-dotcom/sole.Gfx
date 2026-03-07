@@ -72,15 +72,32 @@ nav {
 }
 .accent-text { color: var(--primary-accent); }
 
+/* UPDATED: Let's Talk Button Styling */
 .nav-contact {
+    display: inline-block;
+    color: var(--primary-accent);
     text-decoration: none;
-    color: var(--text-white);
     font-size: 0.9rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.3s;
+    letter-spacing: 1.5px;
+    padding: 10px 24px;
+    background-color: transparent;
+    border: 2px solid var(--primary-accent);
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4), 
+                inset 0 0 8px rgba(0, 229, 255, 0.3);
+    text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+    transition: all 0.3s ease-in-out;
 }
-.nav-contact:hover { color: var(--primary-accent); }
+
+.nav-contact:hover { 
+    background-color: var(--primary-accent);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.7), 
+                inset 0 0 10px rgba(0, 229, 255, 0.5);
+    text-shadow: none;
+}
 
 /* --- HERO SECTION --- */
 #hero {
