@@ -227,11 +227,23 @@ section {
     z-index: 2;
 }
 
+/* --- ENHANCED SKILL CARD ICONS --- */
 .skill-card i {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: var(--text-muted);
-    transition: 0.3s;
+    font-size: 1.6rem !important; /* Sized down slightly to fit the badge */
+    width: 65px !important;
+    height: 65px !important;
+    line-height: 65px !important; /* Perfectly centers the icon vertically */
+    margin: 0 auto 20px !important; /* Centers the circular badge */
+    
+    /* The premium glass badge resting state */
+    background: rgba(255, 255, 255, 0.03) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.08) !important; 
+    border-radius: 50% !important; /* Makes it a perfect circle */
+    color: var(--text-white) !important; 
+    
+    display: block !important; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.02) !important;
 }
 
 .skill-card h3 {
@@ -264,7 +276,16 @@ section {
     transition: transform 0.5s ease;
 }
 
-.skill-card:hover i { color: var(--primary-accent); }
+.skill-card:hover i { 
+    /* The neon burst hover state */
+    color: var(--bg-color) !important; /* Turns the icon dark for maximum contrast */
+    background: var(--primary-accent) !important; /* Fills the circle with neon cyan */
+    border-color: var(--primary-accent) !important;
+    
+    transform: translateY(-8px) scale(1.1) !important; 
+    box-shadow: 0 10px 25px rgba(0, 229, 255, 0.5), 
+                inset 0 0 10px rgba(255, 255, 255, 0.5) !important; 
+}
 .skill-card:hover .play-hint { opacity: 1; transform: translateY(0); }
 
 /* --- ARSENAL / TOOLS --- */
