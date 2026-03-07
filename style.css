@@ -167,7 +167,7 @@ section {
 /* --- UPDATED SKILL CARD STYLES --- */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* This locks it to 4 columns */
+    grid-template-columns: repeat(4, 1fr); /* This locks it to 4 columns on desktop */
     gap: 20px;
     justify-content: center;
     align-items: stretch;
@@ -417,14 +417,64 @@ footer { text-align: center; padding: 40px; color: var(--text-muted); font-size:
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE (SMARTPHONE FIX) --- */
 @media (max-width: 768px) {
-    .hero-title { font-size: 4rem; }
-    .cursor-dot, .cursor-outline { display: none; }
-    * { cursor: auto; }
-    
+    /* Prevents the website from swaying left or right */
+    body, html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+    /* Adjusts the top title so it fits the center of the screen */
+    .hero-title { 
+        font-size: 3.2rem !important; 
+    }
+
+    /* Forces the Showcase Cards to stack directly in the middle */
     .grid-container {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        display: flex !important; /* Switches grid to flexbox for perfect centering */
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 30px !important;
+    }
+    
+    .skill-card {
+        width: 90% !important;
+        max-width: 350px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Centers the Arsenal icons in a clean 2x2 square */
+    .arsenal-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        justify-items: center !important;
+        gap: 15px !important;
+    }
+    
+    .glass-card {
+        width: 100% !important;
+        padding: 25px 10px !important;
+    }
+
+    /* Centers the Contact boxes on top of each other */
+    .contact-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    .contact-box { 
+        width: 100% !important; 
+        max-width: 320px !important;
+    }
+
+    /* Removes desktop cursor for touch screens */
+    .cursor-dot, .cursor-outline { 
+        display: none !important; 
+    }
+    * { 
+        cursor: auto !important; 
     }
 }
 
@@ -434,5 +484,4 @@ body.modal-active .cursor-outline {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
-
 }
