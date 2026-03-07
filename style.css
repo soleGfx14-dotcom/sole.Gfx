@@ -419,22 +419,43 @@ footer { text-align: center; padding: 40px; color: var(--text-muted); font-size:
 
 /* --- RESPONSIVE (SMARTPHONE FIX) --- */
 @media (max-width: 768px) {
-    /* Prevents the website from swaying left or right */
-    body, html {
+    /* 1. Forces the body to always fill the screen even when zoomed out */
+    html, body {
         overflow-x: hidden !important;
         width: 100% !important;
+        min-width: 100vw !important; 
     }
 
-    /* Adjusts the top title so it fits the center of the screen */
-    .hero-title { 
-        font-size: 3.2rem !important; 
-    }
-
-    /* Forces the Showcase Cards to stack directly in the middle */
-    .grid-container {
-        display: flex !important; /* Switches grid to flexbox for perfect centering */
+    /* 2. Forces every major section to perfectly center its children */
+    section, #hero {
+        display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* 3. Centers all headings and paragraphs */
+    .section-header, .hero-content {
+        text-align: center !important;
+        width: 90% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+    }
+
+    .hero-title { 
+        font-size: 3rem !important; 
+    }
+
+    /* 4. Locks the Interactive Showcase cards exactly in the middle */
+    .grid-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
         width: 100% !important;
         gap: 30px !important;
     }
@@ -442,13 +463,18 @@ footer { text-align: center; padding: 40px; color: var(--text-muted); font-size:
     .skill-card {
         width: 90% !important;
         max-width: 350px !important;
-        margin: 0 auto !important;
+        margin: 0 auto !important; /* The magic centering rule */
     }
 
-    /* Centers the Arsenal icons in a clean 2x2 square */
+    /* 5. Locks the Arsenal icons perfectly in the center */
     .arsenal-grid {
+        display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
+        justify-content: center !important;
         justify-items: center !important;
+        width: 90% !important;
+        max-width: 350px !important;
+        margin: 0 auto !important;
         gap: 15px !important;
     }
     
@@ -457,19 +483,22 @@ footer { text-align: center; padding: 40px; color: var(--text-muted); font-size:
         padding: 25px 10px !important;
     }
 
-    /* Centers the Contact boxes on top of each other */
+    /* 6. Centers the Contact boxes on top of each other */
     .contact-container {
+        display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
+        width: 100% !important;
         gap: 20px !important;
     }
 
     .contact-box { 
-        width: 100% !important; 
+        width: 90% !important; 
         max-width: 320px !important;
+        margin: 0 auto !important;
     }
 
-    /* Removes desktop cursor for touch screens */
+    /* 7. Hides custom cursor on mobile */
     .cursor-dot, .cursor-outline { 
         display: none !important; 
     }
