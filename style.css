@@ -167,7 +167,7 @@ section {
 /* --- UPDATED SKILL CARD STYLES --- */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* This locks it to 4 columns */
     gap: 20px;
     justify-content: center;
     align-items: stretch;
@@ -434,4 +434,5 @@ body.modal-active .cursor-outline {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
+
 }
